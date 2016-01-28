@@ -1,5 +1,4 @@
 import os
-import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -83,7 +82,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if any(x in sys.argv for x in ('test', 'jenkins')):
-    from app.test_settings import *  # pylint: disable=W0401,W0614
-else:
-    from app.local_settings import *  # pylint: disable=W0401,E0611,W0614
+from app.local_settings import *  # pylint: disable=W0401,E0611,W0614
