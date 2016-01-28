@@ -82,4 +82,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 from app.local_settings import *  # pylint: disable=W0401,E0611,W0614
