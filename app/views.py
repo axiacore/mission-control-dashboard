@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 from django.http import JsonResponse
 from django.utils import timezone
 from django.views.generic.base import View
@@ -5,9 +7,11 @@ from django.views.generic.base import View
 from .models import Service
 
 
-class SpotligthView(View):
+class SpotligthView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         obj = Service.objects.all().order_by('?').first()
+        if not obj:
+            raise Http404('Create a service first')
 
         return JsonResponse({
             'title': (obj.end_date - timezone.now().date()).days,

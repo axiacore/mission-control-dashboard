@@ -1,8 +1,9 @@
 Django==1.9.1
 
+gunicorn==19.4.5
 ipython==4.0.1
 piprot==0.9.6
-raven==5.9.2
 python-social-auth==0.2.13
+raven==5.9.2
 
 django-extensions==1.6.1
