@@ -1,3 +1,70 @@
 body {
-    background-color: red;
+    font-family: 'Roboto', sans-serif;
+    background-color: #353A3E;
+    color: #FFFFFF;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 4.5vw;
+    margin: 0px;
+    text-transform: uppercase;
+    position: absolute;
+    left: 2vw;
+    top: 2vw;
+}
+
+h1 .sub-title {
+    font-weight: 500;
+    font-size: 1.2vw;
+    display: block;
+}
+
+.spotligth {
+    padding: 15vh 0px;
+    height: 50vh;
+    text-align: center;
+}
+
+.ticker {
+    height: 20vh;
+    background-color: #FFFFFF;
+}
+
+h2 {
+    color: #C3C90D;
+    font-size: 20vw;
+    font-weight: 700;
+    margin: 0px;
+    line-height: 16vw;
+}
+
+h3 {
+    font-size: 4vw;
+    margin: 0px;
+    font-weight: 400;
+}
+
+.box {
+    display: inline-block;
+    border: 2px solid #42484C;
+    margin: 3.4vw 0.8vw;
+    min-width: 25vw;
+}
+.box h4 {
+    text-transform: uppercase;
+    font-size: 1vw;
+    background-color: #42484C;
+    padding: 0.5vw 1vw;
+    margin: 0px;
+    font-weight: 400;
+    text-align: left;
+}
+.box span {
+    display: block;
+    font-size: 2.5vw;
+    color: #1E9592;
+    padding: 0.8vw 1.6vw;
+    font-weight: 500;
+    text-align: left;
 }
