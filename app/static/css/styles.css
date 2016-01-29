@@ -34,7 +34,8 @@ h1 .sub-title {
 }
 .ticker-container .box {
     float: left;
-    top: 66px;
+    top: 50%;
+    margin-top: -47px;
     position: relative;
     padding: 0 20px;
     width: 360px;
@@ -66,8 +67,7 @@ h1 .sub-title {
 }
 
 .ticker-container {
-    height: 20vw;
-    min-width: 1278px;
+    height: 20vh;
     -webkit-animation: move_eye 20s linear 0s infinite normal;
 }
 
@@ -89,11 +89,11 @@ h3 {
     display: inline-block;
     border: 2px solid #42484C;
     margin: 1.8vw 0.4vw;
-    min-width: 12.5vw;
+    min-width: 25vw;
 }
 .spotligth .box h4 {
     text-transform: uppercase;
-    font-size: 0.5vw;
+    font-size: 1vw;
     background-color: #42484C;
     padding: 0.25vw 0.5vw;
     margin: 0px;
@@ -102,7 +102,7 @@ h3 {
 }
 .spotligth .box span {
     display: block;
-    font-size: 1.75vw;
+    font-size: 1.5vw;
     color: #1E9592;
     padding: 0.4vw 0.8vw;
     font-weight: 500;

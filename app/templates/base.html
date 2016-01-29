@@ -71,7 +71,7 @@
           html += tickerTemplate(this);
         });
         $(this).html(html).fadeIn('slow');
-        $('.ticker-container').width(response.list.length * $('.ticker-container .box:first').width());
+        $('.ticker-container').width(response.list.length * $('.ticker-container .box:first').outerWidth());
       });
     });
   }
