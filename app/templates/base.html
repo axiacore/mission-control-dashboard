@@ -4,15 +4,49 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
+  <link href="//fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
   <title>Mission Control Dashboard</title>
 </head>
 <body>
   <div class="container">
-    <h1>MCD<br>MISSION CONTROL DASHBOARD</h1>
+    <h1>
+        MCD
+        <span class="sub-title">MISSION CONTROL<br>DASHBOARD</span>
+    </h1>
     <section class="spotligth"></section>
-    <section class="ticker"></section>
+    <section class="ticker">
+      <div class="ticker-container">
+        <div class="ticker-boxes">
+          <div class="customer-info">
+            <h3>Data CX</h3>
+            <span>Customer Name</span>
+          </div>
+          <div class="website-track">
+            100%
+          </div>
+        </div>
+        <div class="ticker-boxes">
+          <div class="customer-info">
+            <h3>CX Name</h3>
+            <span>Customer Name</span>
+          </div>
+          <div class="website-track">
+            80%
+          </div>
+        </div>
+        <div class="ticker-boxes">
+          <div class="customer-info">
+            <h3>CX Info</h3>
+            <span>Customer Name</span>
+          </div>
+          <div class="website-track">
+            50%
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
   <script type="text/javascript" src="//code.jquery.com/jquery-2.2.0.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
@@ -46,7 +80,7 @@
   }
 
   renderSpotligth();
-  setInterval(renderSpotligth, 5 * 1000);
+  setInterval(renderSpotligth, 30 * 1000);
   </script>
 </body>
 </html>
