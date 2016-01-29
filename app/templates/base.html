@@ -16,7 +16,9 @@
         <span class="sub-title">MISSION CONTROL<br>DASHBOARD</span>
     </h1>
     <section class="spotligth"></section>
-    <section class="ticker"></section>
+    <section class="ticker">
+      <div class="ticker-container"></div>
+    </section>
   </div>
   <script type="text/javascript" src="//code.jquery.com/jquery-2.2.0.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
@@ -40,9 +42,13 @@
   </script>
   <script id="ticker-template" type="text/x-handlebars-template">
   {% verbatim %}
-    <h3>{{title}}</h3>
-    <h4>{{label}}</h4>
-    <span>{{value}}</span>
+    <div class="box">
+      <div class="label-container">
+        <h3>{{title}}</h3>
+        <span>{{label}}</span>
+      </div>
+      <span class="value">{{value}}</span>
+    </div>
   {% endverbatim %}
   </script>
   <script type="text/javascript">
@@ -59,12 +65,13 @@
 
   function renderTicker() {
     $.get('{% url 'ticker' %}', function (response) {
-      $('.ticker').fadeOut(function () {
+      $('.ticker-container').fadeOut(function () {
         html = '';
         $(response.list).each(function () {
           html += tickerTemplate(this);
         });
         $(this).html(html).fadeIn('slow');
+        $('.ticker-container').width(response.list.length * $('.ticker-container .box:first').width());
       });
     });
   }

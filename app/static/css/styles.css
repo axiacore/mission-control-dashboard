@@ -29,6 +29,46 @@ h1 .sub-title {
 .ticker {
     height: 20vh;
     background-color: #FFFFFF;
+    color: black;
+    overflow: hidden;
+}
+.ticker-container .box {
+    float: left;
+    top: 66px;
+    position: relative;
+    padding: 0 20px;
+    width: 360px;
+    border-right-color: #D4DADC;
+    border-right-style: solid;
+    border-width: thin;
+}
+.ticker-container :last-child {
+    border-right: none;
+}
+
+.label-container,
+.value {
+    float: left;
+    padding: 0px;
+}
+
+.value {
+    font-weight: 700;
+    font-size: 80px;
+    display: block;
+    color: #F25C05;
+    padding-left: 20px;
+}
+
+.label-container {
+    line-height: 23px;
+    padding: 24px 20px 0px 0px;
+}
+
+.ticker-container {
+    height: 20vw;
+    min-width: 1278px;
+    -webkit-animation: move_eye 20s linear 0s infinite normal;
 }
 
 h2 {
@@ -45,13 +85,13 @@ h3 {
     font-weight: 400;
 }
 
-.box {
+.spotligth .box {
     display: inline-block;
     border: 2px solid #42484C;
     margin: 1.8vw 0.4vw;
     min-width: 12.5vw;
 }
-.box h4 {
+.spotligth .box h4 {
     text-transform: uppercase;
     font-size: 0.5vw;
     background-color: #42484C;
@@ -60,11 +100,20 @@ h3 {
     font-weight: 400;
     text-align: left;
 }
-.box span {
+.spotligth .box span {
     display: block;
     font-size: 1.75vw;
     color: #1E9592;
     padding: 0.4vw 0.8vw;
     font-weight: 500;
     text-align: left;
+}
+
+@-webkit-keyframes move_eye {
+    from {
+        margin-left:110%;
+    }
+    to {
+        margin-left:-100%;
+    }
 }
