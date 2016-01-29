@@ -46,7 +46,7 @@ class TickerView(LoginRequiredMixin, View):
         )
         if req.ok:
             response.append({
-                'title': 'Open Tickets',
+                'title': 'Tickets',
                 'label': 'Zendesk',
                 'value': req.json()['view_count']['value'],
             })
