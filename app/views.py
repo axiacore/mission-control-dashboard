@@ -60,6 +60,27 @@ class TickerView(LoginRequiredMixin, View):
                 'value': sum([x[1] for x in req.json()]),
             })
 
+        # Uptime
+        s = requests.Session()
+        s.get(settings.MMONIT_URL + 'index.csp')
+        s.post(
+            settings.MMONIT_URL + 'z_security_check',
+            params={
+                'z_username': settings.MMONIT_USER,
+                'z_password': settings.MMONIT_PASS,
+            }
+        )
+        req = s.post(
+            settings.MMONIT_URL + 'reports/uptime/list', params={'range': '6'}
+        )
+        if req.ok:
+            for item in req.json()['items']:
+                response.append({
+                    'title': item['name'],
+                    'label': 'Uptime',
+                    'value': '{0}%'.format(item['uptime']),
+                })
+
         return JsonResponse({
             'list': response,
         })
