@@ -17,35 +17,7 @@
     </h1>
     <section class="spotligth"></section>
     <section class="ticker">
-      <div class="ticker-container">
-        <div class="ticker-boxes">
-          <div class="customer-info">
-            <h3>Data CX</h3>
-            <span>Customer Name</span>
-          </div>
-          <div class="website-track">
-            100%
-          </div>
-        </div>
-        <div class="ticker-boxes">
-          <div class="customer-info">
-            <h3>CX Name</h3>
-            <span>Customer Name</span>
-          </div>
-          <div class="website-track">
-            80%
-          </div>
-        </div>
-        <div class="ticker-boxes">
-          <div class="customer-info">
-            <h3>CX Info</h3>
-            <span>Customer Name</span>
-          </div>
-          <div class="website-track">
-            50%
-          </div>
-        </div>
-      </div>
+      <div class="ticker-container"></div>
     </section>
   </div>
   <script type="text/javascript" src="//code.jquery.com/jquery-2.2.0.js"></script>
@@ -70,9 +42,13 @@
   </script>
   <script id="ticker-template" type="text/x-handlebars-template">
   {% verbatim %}
-    <h3>{{title}}</h3>
-    <h4>{{label}}</h4>
-    <span>{{value}}</span>
+    <div class="box">
+      <div class="label-container">
+        <h3>{{title}}</h3>
+        <span>{{label}}</span>
+      </div>
+      <span class="value">{{value}}</span>
+    </div>
   {% endverbatim %}
   </script>
   <script type="text/javascript">
@@ -89,12 +65,13 @@
 
   function renderTicker() {
     $.get('{% url 'ticker' %}', function (response) {
-      $('.ticker').fadeOut(function () {
+      $('.ticker-container').fadeOut(function () {
         html = '';
         $(response.list).each(function () {
           html += tickerTemplate(this);
         });
         $(this).html(html).fadeIn('slow');
+        $('.ticker-container').width(response.list.length * $('.ticker-container .box:first').width());
       });
     });
   }
