@@ -6,41 +6,41 @@ body {
 
 h1 {
     font-weight: 700;
-    font-size: 4.5vw;
+    font-size: 3vw;
     margin: 0px;
     text-transform: uppercase;
     position: absolute;
-    left: 2vw;
-    top: 2vw;
+    left: 1vw;
+    top: 1vw;
 }
 
 h1 .sub-title {
     font-weight: 500;
-    font-size: 1.2vw;
+    font-size: 0.6vw;
     display: block;
 }
 
 .spotligth {
-    padding: 15vh 0px;
-    height: 50vh;
+    padding: 7.5vh 0px;
+    height: 25vh;
     text-align: center;
 }
 
 .ticker {
-    height: 20vh;
+    height: 10vh;
     background-color: #FFFFFF;
 }
 
 h2 {
     color: #C3C90D;
-    font-size: 20vw;
+    font-size: 10vw;
     font-weight: 700;
     margin: 0px;
-    line-height: 16vw;
+    line-height: 8vw;
 }
 
 h3 {
-    font-size: 4vw;
+    font-size: 2vw;
     margin: 0px;
     font-weight: 400;
 }
@@ -48,23 +48,23 @@ h3 {
 .box {
     display: inline-block;
     border: 2px solid #42484C;
-    margin: 3.4vw 0.8vw;
-    min-width: 25vw;
+    margin: 1.8vw 0.4vw;
+    min-width: 12.5vw;
 }
 .box h4 {
     text-transform: uppercase;
-    font-size: 1vw;
+    font-size: 0.5vw;
     background-color: #42484C;
-    padding: 0.5vw 1vw;
+    padding: 0.25vw 0.5vw;
     margin: 0px;
     font-weight: 400;
     text-align: left;
 }
 .box span {
     display: block;
-    font-size: 2.5vw;
+    font-size: 1.75vw;
     color: #1E9592;
-    padding: 0.8vw 1.6vw;
+    padding: 0.4vw 0.8vw;
     font-weight: 500;
     text-align: left;
 }
