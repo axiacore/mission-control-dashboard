@@ -1,3 +1,5 @@
+from urllib.parse import urlsplit
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.http import JsonResponse
@@ -23,7 +25,7 @@ class SpotligthView(LoginRequiredMixin, View):
             'title_label': 'DAYS TO GO',
             'text_1': obj.customer_name,
             'text_1_label': 'CUSTOMER',
-            'text_2': obj.website,
+            'text_2': '{0.netloc}'.format(urlsplit(obj.website)),
             'text_2_label': 'WEBSITE',
             'text_3': obj.get_type_display(),
             'text_3_label': 'SERVICE',
