@@ -1,5 +1,6 @@
 from urllib.parse import urlsplit
 
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.http import JsonResponse
@@ -8,6 +9,8 @@ from django.views.generic import TemplateView
 from django.views.generic.base import View
 
 from .models import Service
+
+import requests
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -29,4 +32,21 @@ class SpotligthView(LoginRequiredMixin, View):
             'text_2_label': 'WEBSITE',
             'text_3': obj.get_type_display(),
             'text_3_label': 'SERVICE',
+        })
+
+
+class TickerView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        response = []
+
+        req = requests.get(settings.SENTRY_URL, auth=(settings.SENTRY_KEY, ''))
+        if req.ok:
+            response.append({
+                'title': 'Sentry',
+                'label': 'Events',
+                'value': sum([x[1] for x in req.json()]),
+            })
+
+        return JsonResponse({
+            'list': response,
         })
