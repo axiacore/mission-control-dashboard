@@ -44,6 +44,9 @@ ALLOWED_HOSTS = ['dashboard.mycompany.com']
 RAVEN_CONFIG = {
     'dsn': 'your-sentry-dsn',
 }
+
+SENTRY_URL = 'http://sentry.com/api/0/organizations/mycompany/stats/'
+SENTRY_KEY = 'apikey'
 ```
 
 Then run the management commands:

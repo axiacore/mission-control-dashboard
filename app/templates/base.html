@@ -68,8 +68,16 @@
     </div>
   {% endverbatim %}
   </script>
+  <script id="ticker-template" type="text/x-handlebars-template">
+  {% verbatim %}
+    <h3>{{title}}</h3>
+    <h4>{{label}}</h4>
+    <span>{{value}}</span>
+  {% endverbatim %}
+  </script>
   <script type="text/javascript">
   var spotligthTemplate = Handlebars.compile($('#spotligth-template').html());
+  var tickerTemplate = Handlebars.compile($('#ticker-template').html());
 
   function renderSpotligth() {
     $.get('{% url 'spotligth' %}', function (response) {
@@ -79,8 +87,23 @@
     });
   }
 
+  function renderTicker() {
+    $.get('{% url 'ticker' %}', function (response) {
+      $('.ticker').fadeOut(function () {
+        html = '';
+        $(response.list).each(function () {
+          html += tickerTemplate(this);
+        });
+        $(this).html(html).fadeIn('slow');
+      });
+    });
+  }
+
   renderSpotligth();
-  setInterval(renderSpotligth, 30 * 1000);
+  setInterval(renderSpotligth, 20 * 1000);
+
+  renderTicker();
+  setInterval(renderTicker, 60 * 1000);
   </script>
 </body>
 </html>
