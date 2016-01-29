@@ -45,8 +45,12 @@ RAVEN_CONFIG = {
     'dsn': 'your-sentry-dsn',
 }
 
-SENTRY_URL = 'http://sentry.com/api/0/organizations/mycompany/stats/'
-SENTRY_KEY = 'apikey'
+ZENDESK_URL = 'https://{mycompany}.zendesk.com/api/v2/views/{view-id}/count.json'
+ZENDESK_EMAIL = '{email}/token'
+ZENDESK_API = '{apikey}'
+
+SENTRY_URL = 'http://sentry.com/api/0/organizations/{mycompany}/stats/'
+SENTRY_KEY = '{apikey}'
 ```
 
 Then run the management commands:

@@ -39,11 +39,24 @@ class TickerView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         response = []
 
+        # Zendesk
+        req = requests.get(
+            settings.ZENDESK_URL,
+            auth=(settings.ZENDESK_EMAIL, settings.ZENDESK_API),
+        )
+        if req.ok:
+            response.append({
+                'title': 'Open Tickets',
+                'label': 'Zendesk',
+                'value': req.json()['view_count']['value'],
+            })
+
+        # Sentry
         req = requests.get(settings.SENTRY_URL, auth=(settings.SENTRY_KEY, ''))
         if req.ok:
             response.append({
-                'title': 'Sentry',
-                'label': 'Events',
+                'title': 'Events',
+                'label': 'Sentry',
                 'value': sum([x[1] for x in req.json()]),
             })
 
