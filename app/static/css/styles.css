@@ -38,7 +38,6 @@ h1 .sub-title {
     margin-top: -47px;
     position: relative;
     padding: 0 20px;
-    width: 360px;
     border-right-color: #D4DADC;
     border-right-style: solid;
     border-width: thin;
@@ -58,7 +57,6 @@ h1 .sub-title {
     font-size: 80px;
     display: block;
     color: #F25C05;
-    padding-left: 20px;
 }
 
 .label-container {
@@ -66,9 +64,16 @@ h1 .sub-title {
     padding: 24px 20px 0px 0px;
 }
 
+.label-container h3{
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 .ticker-container {
     height: 20vh;
-    -webkit-animation: move_eye 20s linear 0s infinite normal;
+    margin-left:110%;
+    animation: move_eye 60s linear 0s normal;
+    width: 8000px;
 }
 
 h2 {
