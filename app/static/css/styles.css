@@ -38,9 +38,8 @@ h1 .sub-title {
     margin-top: -47px;
     position: relative;
     padding: 0 20px;
-    border-right-color: #D4DADC;
+    border-right-color: #353A3E;
     border-right-style: solid;
-    border-width: thin;
 }
 .ticker-container :last-child {
     border-right: none;
@@ -60,8 +59,8 @@ h1 .sub-title {
 }
 
 .label-container {
-    line-height: 23px;
-    padding: 24px 20px 0px 0px;
+    line-height: 27px;
+    padding: 20px 20px 0px 0px;
 }
 
 .label-container h3{
@@ -122,3 +121,12 @@ h3 {
         margin-left:-100%;
     }
 }
+
+.logo {
+    text-align: right;
+}
+img {
+    width: 10%;
+    margin: -6px 0px;
+}
+
