@@ -125,10 +125,10 @@ h3 {
     text-align: left;
 }
 
-@-webkit-keyframes move_eye,
-@-moz-keyframes move_eye,
-@-o-keyframes move_eye,
-@keyframes move_eye {
+-webkit-keyframes move_eye,
+-moz-keyframes move_eye,
+-o-keyframes move_eye,
+keyframes move_eye {
     from {
         margin-left:110%;
     }
