@@ -83,6 +83,9 @@ h1 .sub-title {
     height: 20vh;
     margin-left:110%;
     animation: move_eye 60s linear 0s normal;
+    -webkit-animation: move_eye 60s linear 0s normal;
+    -moz-animation: move_eye 60s linear 0s normal;
+    -o-animation: move_eye 60s linear 0s normal;
     width: 8000px;
 }
 
