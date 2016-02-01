@@ -55,6 +55,7 @@
   {% endverbatim %}
   </script>
   <script type="text/javascript">
+  var interval;
   var spotligthTemplate = Handlebars.compile($('#spotligth-template').html());
   var tickerTemplate = Handlebars.compile($('#ticker-template').html());
 
@@ -83,7 +84,7 @@
             lastSheet.removeRule(lastSheet.cssRules.length - 1);
             lastSheet.insertRule("@-webkit-keyframes move_eye { from { margin-left:110%; } to {margin-left: -" + totalWidth + "px;} }", lastSheet.cssRules.length);
             $('.ticker-container').width(totalWidth);
-            interval = setInterval(renderTicker, 41 * 1000);
+            interval = setInterval(renderTicker, 60 * 1000);
         });
       });
     });
@@ -93,7 +94,6 @@
   setInterval(renderSpotligth, 20 * 1000);
 
   renderTicker();
-  var interval;
   </script>
 </body>
 </html>
