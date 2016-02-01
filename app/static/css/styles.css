@@ -45,10 +45,8 @@ h1 .sub-title {
 }
 .ticker-container .box {
     float: left;
-    top: 50%;
-    margin-top: -47px;
-    position: relative;
-    padding: 0 20px;
+    margin-top: 2.7vh;
+    padding: 0 10px;
     border-right-color: #353A3E;
     border-right-style: solid;
 }
@@ -127,7 +125,10 @@ h3 {
     text-align: left;
 }
 
-@-webkit-keyframes move_eye {
+@-webkit-keyframes move_eye,
+@-moz-keyframes move_eye,
+@-o-keyframes move_eye,
+@keyframes move_eye {
     from {
         margin-left:110%;
     }
