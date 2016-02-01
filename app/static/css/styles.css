@@ -20,6 +20,13 @@ h1 .sub-title {
     display: block;
 }
 
+.logo {
+    text-align: right;
+}
+.logo img {
+    width: 10%;
+}
+
 .spotligth {
     padding: 15vh 0px;
     height: 50vh;
@@ -122,11 +129,4 @@ h3 {
     }
 }
 
-.logo {
-    text-align: right;
-}
-.logo img {
-    width: 10%;
-    margin: -6px 0px;
-}
 
