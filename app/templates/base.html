@@ -68,7 +68,9 @@
   }
 
   function renderTicker() {
-    clearInterval(interval);
+    if (interval) {
+      clearInterval(interval);
+    }
     $.get('{% url 'ticker' %}', function (response) {
       $('.ticker-container').fadeOut(function () {
         html = '';
@@ -80,9 +82,9 @@
             $('.ticker-container .box').each(function(index, element) {
                 totalWidth += $(element).outerWidth();
             });
-            // var lastSheet = document.styleSheets[document.styleSheets.length - 1];
-            // lastSheet.removeRule(lastSheet.cssRules.length - 1);
-            // lastSheet.insertRule("@-webkit-keyframes move_eye { from { margin-left:110%; } to {margin-left: -" + totalWidth + "px;} }", lastSheet.cssRules.length);
+            var lastSheet = document.styleSheets[document.styleSheets.length - 1];
+            lastSheet.removeRule(lastSheet.cssRules.length - 1);
+            lastSheet.insertRule("@-webkit-keyframes move_eye { from { margin-left:110%; } to {margin-left: -" + totalWidth + "px;} }", lastSheet.cssRules.length);
             $('.ticker-container').width(totalWidth);
             interval = setInterval(renderTicker, 60 * 1000);
         });
