@@ -25,7 +25,7 @@ h1 .sub-title {
     position: absolute;
     bottom: 20vh;
     right: 0px;
-    width: 8%;
+    width: 10%;
 }
 .logo img {
     width: 100%;
@@ -45,7 +45,6 @@ h1 .sub-title {
 }
 .ticker-container .box {
     float: left;
-    margin-top: 2.7vh;
     padding: 0 10px;
     border-right-color: #353A3E;
     border-right-style: solid;
@@ -82,9 +81,10 @@ h1 .sub-title {
     margin-left:110%;
     animation: move_eye 60s linear 0s normal;
     -webkit-animation: move_eye 60s linear 0s normal;
-    -moz-animation: move_eye 60s linear 0s normal;
-    -o-animation: move_eye 60s linear 0s normal;
     width: 8000px;
+    position: relative;
+    top: 50%;
+    margin-top: -47px;
 }
 
 h2 {
@@ -125,16 +125,20 @@ h3 {
     text-align: left;
 }
 
-@-webkit-keyframes move_eye,
-@-moz-keyframes move_eye,
-@-o-keyframes move_eye,
-@keyframes move_eye {
+@-webkit-keyframes move_eye {
     from {
-        margin-left:110%;
+        margin-left: 110%;
     }
     to {
-        margin-left:-100%;
+        margin-left: -100%;
     }
 }
 
-
+@keyframes move_eye {
+    from {
+        margin-left: 110%;
+    }
+    to {
+        margin-left: -100%;
+    }
+}
