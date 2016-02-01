@@ -25,9 +25,10 @@ h1 .sub-title {
     position: absolute;
     bottom: 20vh;
     right: 0px;
+    width: 8%;
 }
 .logo img {
-    width: 52%;
+    width: 100%;
 }
 
 .spotligth {
