@@ -45,10 +45,8 @@ h1 .sub-title {
 }
 .ticker-container .box {
     float: left;
-    top: 50%;
-    margin-top: -47px;
-    position: relative;
-    padding: 0 20px;
+    margin-top: 3vh;
+    padding: 0 10px;
     border-right-color: #353A3E;
     border-right-style: solid;
 }
