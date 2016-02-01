@@ -53,7 +53,7 @@ h1 .sub-title {
     border-right-style: solid;
 }
 .ticker-container :last-child {
-    border-right: none;
+    border-right-style: none;
 }
 
 .label-container,
