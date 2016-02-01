@@ -22,9 +22,12 @@ h1 .sub-title {
 
 .logo {
     text-align: right;
+    position: absolute;
+    bottom: 20vh;
+    right: 0px;
 }
 .logo img {
-    width: 10%;
+    width: 52%;
 }
 
 .spotligth {
