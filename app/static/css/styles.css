@@ -45,7 +45,7 @@ h1 .sub-title {
 }
 .ticker-container .box {
     float: left;
-    padding: 0 10px;
+    padding: 0 20px;
     border-right-color: #353A3E;
     border-right-style: solid;
 }
@@ -61,30 +61,34 @@ h1 .sub-title {
 
 .value {
     font-weight: 700;
-    font-size: 80px;
+    font-size: 65px;
     display: block;
     color: #F25C05;
 }
 
 .label-container {
     line-height: 27px;
-    padding: 20px 20px 0px 0px;
+    padding: 10px 20px 0px 0px;
 }
 
 .label-container h3{
     font-weight: 700;
     text-transform: uppercase;
+    font-size: 1.4vw;
+}
+.label-container span{
+    font-size: 1.2vw;
 }
 
 .ticker-container {
     height: 20vh;
-    margin-left:110%;
+    margin-left: 110%;
     animation: move_eye 60s linear 0s normal;
     -webkit-animation: move_eye 60s linear 0s normal;
     width: 8000px;
     position: relative;
     top: 50%;
-    margin-top: -47px;
+    margin-top: -38px;
 }
 
 h2 {
