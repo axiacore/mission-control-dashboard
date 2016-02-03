@@ -2,6 +2,9 @@
 
 Mission Control Dashboard for our TVs at the office.
 
+![ScreenShot](https://s3.amazonaws.com/uploads.hipchat.com/50553/341552/ZBjCJyACg09uQcH/mission-control-dashboard.jpg)
+
+
 ## Running
 
 To run or update your local environment you can run:
