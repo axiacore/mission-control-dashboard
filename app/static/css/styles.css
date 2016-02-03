@@ -129,7 +129,7 @@ h3 {
     text-align: left;
 }
 
-@-webkit-keyframes move_eye {
+-webkit-keyframes move_eye {
     from {
         margin-left: 110%;
     }
@@ -138,7 +138,7 @@ h3 {
     }
 }
 
-@keyframes move_eye {
+keyframes move_eye {
     from {
         margin-left: 110%;
     }
