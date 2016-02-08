@@ -9,8 +9,10 @@ Mission Control Dashboard for our TVs at the office.
 
 To run or update your local environment you can run:
 
+```bash
     $ docker-compose build
     $ docker-compose up
+```
 
 It will rebuild you image, since Docker has a cache mechanism it will take
 less than building the image for the first time.
@@ -20,24 +22,30 @@ less than building the image for the first time.
 
 To run any command on the app container you can do:
 
+```bash
     $ docker exec -it missioncontroldashboard_web_1 ./manage.py shell_plus
     $ docker exec -it missioncontroldashboard_web_1 bash
+```
 
 ## Deployment
 
 On your production server do:
 
+```bash
     $ virtualenv -p python3 mission_control_dashboard_app
     $ cd mission_control_dashboard_app
     # clone the repository
     $ source bin/activate
     $ pip install -r mission-control-dashboard/requirements.txt
+```
 
 Create the file ```app/local_settings.py``` with:
 
+```bash
     $ vim app/local_settings.py
-
 ```
+
+```python
 SECRET_KEY = 'this-is-so-secret'
 
 DEBUG = False
@@ -63,14 +71,18 @@ MMONIT_PASS = '{pass}'
 
 Then run the management commands:
 
+```bash
     $ ./manage.py migrate
     $ ./manage.py collectstatic --noinput
+```
 
 As root (or sudo) create the service:
 
+```bash
     $ vim /etc/init/gunicorn_mission_control.conf
-
 ```
+
+```bash
 description "Gunicorn Mission Control Dashboard"
 
 start on (filesystem)
@@ -89,7 +101,7 @@ Start the service:
 
 Create your nginx site file as:
 
-```
+``` bash
 server {
     listen       80;
     server_name  dashboard.mycompany.com;
