@@ -26,8 +26,39 @@ class Service(models.Model):
         choices=TYPE_CHOICES,
     )
 
-    def __unicode__(self):
-        return u'{0}'.format(self.identifier)
+    def __str__(self):
+        return u'{0}'.format(self.customer_name)
 
-    class Meta:
-        ordering = ['id']
+    @property
+    def days_to_go(self):
+        from django.utils import timezone
+        return (self.end_date - timezone.now().date()).days
+
+    @property
+    def website_display(self):
+        from urllib.parse import urlsplit
+        return '{0.netloc}'.format(urlsplit(self.website))
+
+
+class GoogleAnalyticsSite(models.Model):
+    website = models.URLField()
+
+    ga_view_id = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return u'{0}'.format(self.website)
+
+
+class GoogleAnalyticsSiteGoal(models.Model):
+    name = models.CharField(
+        max_length=20,
+    )
+
+    website = models.URLField()
+
+    ga_metric_id = models.CharField(
+        max_length=10,
+    )
+
+    def __str__(self):
+        return u'{0}'.format(self.name)

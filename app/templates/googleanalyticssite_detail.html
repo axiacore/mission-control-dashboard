@@ -1,0 +1,63 @@
+<h3>{{ obj.website }}</h3>
+<div class="box">
+    <h4>Sessions</h4>
+    <span id="data-sessions"></span>
+</div>
+<div class="box">
+    <h4>Users</h4>
+    <span id="data-users"></span>
+</div>
+<div class="box">
+    <h4>Pageviews</h4>
+    <span id="data-pageviews"></span>
+</div>
+
+<div style="margin: 0 auto; width: 80%;">
+    <div id="chart-container"></div>
+</div>
+
+<script>
+gapi.analytics.ready(function() {
+    gapi.analytics.auth.authorize({
+        'serverAuth': {
+            'access_token': '{{ ACCESS_TOKEN }}'
+        }
+    });
+
+    var dataQuery = gapi.client.analytics.data.ga.get({
+        'ids': 'ga:{{ obj.ga_view_id }}',
+        'start-date': '30daysAgo',
+        'end-date': 'today',
+        'metrics': 'ga:sessions,ga:users,ga:pageviews'
+    });
+    dataQuery.execute(function (results) {
+        var totals = results.totalsForAllResults;
+        $('#data-sessions').text(totals['ga:sessions']);
+        $('#data-users').text(totals['ga:users']);
+        $('#data-pageviews').text(totals['ga:pageviews']);
+    });
+
+    var dataChart = new gapi.analytics.googleCharts.DataChart({
+        query: {
+            'ids': 'ga:{{ obj.ga_view_id }}',
+            'start-date': '30daysAgo',
+            'end-date': 'today',
+            'metrics': 'ga:sessions,ga:users,ga:pageviews',
+            'dimensions': 'ga:date'
+        },
+        chart: {
+            'container': 'chart-container',
+            'type': 'LINE',
+            'options': {
+                'width': '100%',
+                'series': {
+                    '0': { color: '#e2431e' },
+                    '1': { color: '#43459d' },
+                    '2': { color: '#f1ca3a' }
+                }
+            }
+        }
+    });
+    dataChart.execute();
+});
+</script>

@@ -12,37 +12,26 @@
 <body>
     <div class="container">
         <h1>MCD <span class="sub-title">MISSION CONTROL<br>DASHBOARD</span></h1>
+
         <section class="spotligth"></section>
 
-        <section class="logo">
-            <img src="{% static 'svg/axiacore-white.svg' %}">
-        </section>
+        <section class="logo"><img src="{% static 'svg/axiacore-white.svg' %}"></section>
 
         <section class="ticker">
             <div class="ticker-container"></div>
         </section>
     </div>
 
+    <script>
+    (function(w,d,s,g,js,fs){
+      g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+      js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+      js.src='//apis.google.com/js/platform.js';
+      fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+    }(window,document,'script'));
+    </script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-    <script id="spotligth-template" type="text/x-handlebars-template">
-    {% verbatim %}
-        <h2>{{title}}</h2>
-        <h3>{{title_label}}</h3>
-        <div class="box">
-            <h4>{{text_1_label}}</h4>
-            <span>{{text_1}}</span>
-        </div>
-        <div class="box">
-            <h4>{{text_2_label}}</h4>
-            <span>{{text_2}}</span>
-        </div>
-        <div class="box">
-            <h4>{{text_3_label}}</h4>
-            <span>{{text_3}}</span>
-        </div>
-    {% endverbatim %}
-    </script>
     <script id="ticker-template" type="text/x-handlebars-template">
     {% verbatim %}
         <div class="box">
@@ -56,13 +45,12 @@
     </script>
     <script type="text/javascript">
     var interval;
-    var spotligthTemplate = Handlebars.compile($('#spotligth-template').html());
     var tickerTemplate = Handlebars.compile($('#ticker-template').html());
 
     function renderSpotligth() {
         $.get('{% url 'spotligth' %}', function (response) {
             $('.spotligth').fadeOut(function () {
-                $(this).html(spotligthTemplate(response)).fadeIn('slow');
+                $(this).html(response).fadeIn('slow');
             });
         });
     }
@@ -93,7 +81,7 @@
     renderSpotligth();
     setInterval(renderSpotligth, 20 * 1000);
 
-    renderTicker();
+    //renderTicker();
     </script>
 </body>
 </html>

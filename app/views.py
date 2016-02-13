@@ -1,39 +1,50 @@
-from urllib.parse import urlsplit
+from itertools import cycle
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.cache import cache
 from django.http import Http404
 from django.http import JsonResponse
-from django.utils import timezone
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.base import View
 
+from .google_analytics import get_access_token
 from .models import Service
+from .models import GoogleAnalyticsSite
+from .models import GoogleAnalyticsSiteGoal
 
 import requests
 
 
+spotligth_cycle = cycle('AB')
+
+
 class HomeView(LoginRequiredMixin, TemplateView):
-    template_name = 'base.html'
+    template_name = 'home.html'
 
 
 class SpotligthView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        obj = Service.objects.all().order_by('?').first()
-        if not obj:
-            raise Http404('Create a service first')
+        case = next(spotligth_cycle)
+        if case == 'A':
+            obj = Service.objects.all().order_by('?').first()
+            if not obj:
+                raise Http404('Create a Service first')
 
-        return JsonResponse({
-            'title': (obj.end_date - timezone.now().date()).days,
-            'title_label': 'DAYS TO GO',
-            'text_1': obj.customer_name,
-            'text_1_label': 'CUSTOMER',
-            'text_2': '{0.netloc}'.format(urlsplit(obj.website)),
-            'text_2_label': 'WEBSITE',
-            'text_3': obj.get_type_display(),
-            'text_3_label': 'SERVICE',
-        })
+            return render(request, 'service_detail.html', {
+                'obj': obj,
+            })
+
+        elif case == 'B':
+            obj = GoogleAnalyticsSite.objects.all().order_by('?').first()
+            if not obj:
+                raise Http404('Create a GoogleAnalyticsSite first')
+
+            return render(request, 'googleanalyticssite_detail.html', {
+                'ACCESS_TOKEN': get_access_token(),
+                'obj': obj,
+            })
 
 
 class TickerView(LoginRequiredMixin, View):
