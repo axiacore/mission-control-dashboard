@@ -113,6 +113,6 @@ class TickerView(LoginRequiredMixin, View):
 
         response_list += mmonit_list
 
-        return JsonResponse({
-            'list': response_list,
+        return render(request, 'ticker_detail.html', {
+            'response_list': response_list,
         })

@@ -31,22 +31,7 @@
     }(window,document,'script'));
     </script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-    <script id="ticker-template" type="text/x-handlebars-template">
-    {% verbatim %}
-        <div class="box">
-            <div class="label-container">
-                <h3>{{title}}</h3>
-                <span>{{label}}</span>
-            </div>
-            <span class="value">{{value}}</span>
-        </div>
-    {% endverbatim %}
-    </script>
     <script type="text/javascript">
-    var interval;
-    var tickerTemplate = Handlebars.compile($('#ticker-template').html());
-
     function renderSpotligth() {
         $.get('{% url 'spotligth' %}', function (response) {
             $('.spotligth').fadeOut(function () {
@@ -54,16 +39,15 @@
             });
         });
     }
+    renderSpotligth();
+    setInterval(renderSpotligth, 20 * 1000);
 
+    var interval;
     function renderTicker() {
         clearInterval(interval);
         $.get('{% url 'ticker' %}', function (response) {
             $('.ticker-container').fadeOut(function () {
-                html = '';
-                $(response.list).each(function () {
-                    html += tickerTemplate(this);
-                });
-                $(this).html(html).fadeIn('slow', function() {
+                $(this).html(response).fadeIn('slow', function() {
                     var totalWidth = 0;
                     $('.ticker-container .box').each(function(index, element) {
                         totalWidth += $(element).outerWidth();
@@ -77,11 +61,7 @@
             });
         });
     }
-
-    renderSpotligth();
-    setInterval(renderSpotligth, 20 * 1000);
-
-    //renderTicker();
+    renderTicker();
     </script>
 </body>
 </html>
