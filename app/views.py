@@ -2,6 +2,7 @@ from urllib.parse import urlsplit
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.cache import cache
 from django.http import Http404
 from django.http import JsonResponse
 from django.utils import timezone
@@ -40,16 +41,21 @@ class TickerView(LoginRequiredMixin, View):
         response = []
 
         # Zendesk
-        req = requests.get(
-            settings.ZENDESK_URL,
-            auth=(settings.ZENDESK_EMAIL, settings.ZENDESK_API),
-        )
-        if req.ok:
-            response.append({
-                'title': 'Tickets',
-                'label': 'Zendesk',
-                'value': req.json()['view_count']['value'],
-            })
+        zendesk_data = cache.get('zendesk_data')
+        if not zendesk_data:
+            req = requests.get(
+                settings.ZENDESK_URL,
+                auth=(settings.ZENDESK_EMAIL, settings.ZENDESK_API),
+            )
+            if req.ok:
+                zendesk_data = {
+                    'title': 'Tickets',
+                    'label': 'Zendesk',
+                    'value': req.json()['view_count']['value'],
+                }
+                cache.set('zendesk_data', zendesk_data, 60)
+
+        response.append(zendesk_data)
 
         # Sentry
         req = requests.get(settings.SENTRY_URL, auth=(settings.SENTRY_KEY, ''))
@@ -60,7 +66,7 @@ class TickerView(LoginRequiredMixin, View):
                 'value': sum([x[1] for x in req.json()]),
             })
 
-        # Uptime
+        # Mmonit
         s = requests.Session()
         s.get(settings.MMONIT_URL + 'index.csp')
         s.post(
