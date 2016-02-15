@@ -1,4 +1,7 @@
 <h3>{{ obj.website }}</h3>
+<div style="width: 80%; height: 200px; margin: 0 auto;">
+    <canvas id="theChart"></canvas>
+</div>
 <div class="box">
     <h4>Sessions</h4>
     <span id="data-sessions"></span>
@@ -11,14 +14,7 @@
     <h4>Pageviews</h4>
     <span id="data-pageviews"></span>
 </div>
-
-<div style="width: 80%; margin: 0 auto;">
-    <canvas id="theChart"></canvas>
-</div>
-
 <script>
-
-// Formats a number.
 var formatNumber = function(num) {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 };
@@ -54,7 +50,7 @@ gapi.analytics.ready(function() {
     });
     report.on('success', function(results) {
         var ctx = document.getElementById('theChart').getContext('2d');
-        var labels = results.rows.map(function(row) { return row[0]; });
+        var labels = results.rows.map(function(row) { return ''; });
         var sessions = results.rows.map(function(row) { return row[1]; });
         var users = results.rows.map(function(row) { return row[2]; });
         var pageviews = results.rows.map(function(row) { return row[3]; });
@@ -89,6 +85,7 @@ gapi.analytics.ready(function() {
         };
         new Chart(ctx).Line(data, {
             animation: false,
+            showScale: false,
             responsive: true,
             maintainAspectRatio: false
         });
