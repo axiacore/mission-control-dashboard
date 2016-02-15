@@ -12,8 +12,8 @@
     <span id="data-pageviews"></span>
 </div>
 
-<div style="margin: 0 auto; width: 80%;">
-    <div id="chart-container"></div>
+<div style="width: 80%; margin: 0 auto;">
+    <canvas id="theChart"></canvas>
 </div>
 
 <script>
@@ -43,27 +43,55 @@ gapi.analytics.ready(function() {
         $('#data-pageviews').text(formatNumber(totals['ga:pageviews']));
     });
 
-    var dataChart = new gapi.analytics.googleCharts.DataChart({
+    var report = new gapi.analytics.report.Data({
         query: {
             'ids': 'ga:{{ obj.ga_view_id }}',
             'start-date': '30daysAgo',
             'end-date': 'today',
             'metrics': 'ga:sessions,ga:users,ga:pageviews',
             'dimensions': 'ga:date'
-        },
-        chart: {
-            'container': 'chart-container',
-            'type': 'LINE',
-            'options': {
-                'width': '100%',
-                'series': {
-                    '0': { color: '#e2431e' },
-                    '1': { color: '#43459d' },
-                    '2': { color: '#f1ca3a' }
-                }
-            }
         }
     });
-    dataChart.execute();
+    report.on('success', function(results) {
+        var ctx = document.getElementById('theChart').getContext('2d');
+        var labels = results.rows.map(function(row) { return row[0]; });
+        var sessions = results.rows.map(function(row) { return row[1]; });
+        var users = results.rows.map(function(row) { return row[2]; });
+        var pageviews = results.rows.map(function(row) { return row[3]; });
+        var data = {
+            labels : labels,
+            datasets : [
+              {
+                label: 'Sessions',
+                fillColor : 'rgba(255,0,0,0.5)',
+                strokeColor : 'rgba(255,0,0,1)',
+                pointColor : 'rgba(255,0,0,1)',
+                pointStrokeColor : '#fff',
+                data : sessions
+              },
+              {
+                label: 'Users',
+                fillColor : 'rgba(220,220,220,0.5)',
+                strokeColor : 'rgba(220,220,220,1)',
+                pointColor : 'rgba(220,220,220,1)',
+                pointStrokeColor : '#fff',
+                data : users
+              },
+              {
+                label: 'Pageviews',
+                fillColor : 'rgba(151,187,205,0.5)',
+                strokeColor : 'rgba(151,187,205,1)',
+                pointColor : 'rgba(151,187,205,1)',
+                pointStrokeColor : '#fff',
+                data : pageviews
+              }
+            ]
+        };
+        new Chart(ctx).Line(data, {
+            responsive: true,
+            maintainAspectRatio: false
+        });
+    });
+    report.execute();
 });
 </script>
