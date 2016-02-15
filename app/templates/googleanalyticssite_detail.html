@@ -12,15 +12,15 @@
     <span id="data-pageviews"></span>
 </div>
 
-<div style="width: 80%; margin: 0 auto;">
+<div style="width: 80%; height: 300px; margin: 0 auto;">
     <canvas id="theChart"></canvas>
 </div>
 
 <script>
 
 // Formats a number.
-var formatNumber  = function(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+var formatNumber = function(num) {
+    return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 };
 
 gapi.analytics.ready(function() {
