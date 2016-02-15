@@ -17,6 +17,12 @@
 </div>
 
 <script>
+
+// Formats a number.
+var formatNumber  = function(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+};
+
 gapi.analytics.ready(function() {
     gapi.analytics.auth.authorize({
         'serverAuth': {
@@ -32,9 +38,9 @@ gapi.analytics.ready(function() {
     });
     dataQuery.execute(function (results) {
         var totals = results.totalsForAllResults;
-        $('#data-sessions').text(totals['ga:sessions']);
-        $('#data-users').text(totals['ga:users']);
-        $('#data-pageviews').text(totals['ga:pageviews']);
+        $('#data-sessions').text(formatNumber(totals['ga:sessions']));
+        $('#data-users').text(formatNumber(totals['ga:users']));
+        $('#data-pageviews').text(formatNumber(totals['ga:pageviews']));
     });
 
     var dataChart = new gapi.analytics.googleCharts.DataChart({
