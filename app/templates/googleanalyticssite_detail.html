@@ -86,8 +86,10 @@ gapi.analytics.ready(function() {
         new Chart(ctx).Line(data, {
             animation: false,
             showScale: false,
+            showTooltips: false,
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            pointDot: false
         });
     });
     report.execute();
