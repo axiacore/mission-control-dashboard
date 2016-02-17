@@ -145,17 +145,17 @@ h3 {
     border-radius: 25px;
     vertical-align: middle;
 }
+#data-pageviews .color {
+    border: 2px solid #FFED19;
+    background-color: rgba(255,237,25,0.6);
+}
 #data-sessions .color {
-    border: 2px solid #049ABF;
-    background-color: rgba(4,154,191,0.7);
+    border: 2px solid #F2163E;
+    background-color: rgba(242,22,62,0.6);
 }
 #data-users .color {
     border: 2px solid #1BBE9E;
-    background-color: rgba(27,190,158,0.7);
-}
-#data-pageviews .color {
-    border: 2px solid #FFED19;
-    background-color: rgba(255,237,25,0.7);
+    background-color: rgba(27,190,158,0.6);
 }
 
 -webkit-keyframes move_eye {
