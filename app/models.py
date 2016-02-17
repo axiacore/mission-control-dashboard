@@ -48,6 +48,11 @@ class GoogleAnalyticsSite(models.Model):
     def __str__(self):
         return u'{0}'.format(self.website)
 
+    @property
+    def website_display(self):
+        from urllib.parse import urlsplit
+        return '{0.netloc}'.format(urlsplit(self.website))
+
 
 class GoogleAnalyticsSiteGoal(models.Model):
     name = models.CharField(

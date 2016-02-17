@@ -4,7 +4,6 @@ from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.cache import cache
 from django.http import Http404
-from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.base import View
@@ -45,6 +44,7 @@ class SpotligthView(LoginRequiredMixin, View):
                 'ACCESS_TOKEN': get_access_token(),
                 'obj': obj,
             })
+
 
 class TickerView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
