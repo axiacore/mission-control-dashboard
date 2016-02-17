@@ -33,6 +33,10 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript" src=//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js></script>
     <script type="text/javascript">
+    setTimeout(function () {
+        window.location.reload();
+    }, 15 * 60 * 1000);     // Every 15 minutes
+
     function renderSpotligth() {
         $.get('{% url 'spotligth' %}', function (response) {
             $('.spotligth').fadeOut(function () {
@@ -41,7 +45,7 @@
         });
     }
     renderSpotligth();
-    setInterval(renderSpotligth, 20 * 1000);
+    setInterval(renderSpotligth, 20 * 1000);    // Every 20 seconds
 
     var interval;
     function renderTicker() {
@@ -57,7 +61,7 @@
                     ourCssFile.removeRule(ourCssFile.cssRules.length - 1);
                     ourCssFile.insertRule("@-webkit-keyframes move_eye { from { margin-left:110%; } to {margin-left: -" + totalWidth + "px;} }", ourCssFile.cssRules.length);
                     $('.ticker-container').width(totalWidth);
-                    interval = setInterval(renderTicker, 60 * 1000);
+                    interval = setInterval(renderTicker, 60 * 1000);    // Every 60 seconds
                 });
             });
         });
