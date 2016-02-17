@@ -1,6 +1,10 @@
 <h3>{{ obj.website }}</h3>
-<div style="width: 80%; height: 200px; margin: 40px auto 0;">
+<div style="width: 80%; height: 200px; margin: 0 auto;">
     <canvas id="theChart"></canvas>
+</div>
+<div class="box">
+    <h4>Pageviews</h4>
+    <span id="data-pageviews" class="data-google"></span>
 </div>
 <div class="box">
     <h4>Sessions</h4>
@@ -9,10 +13,6 @@
 <div class="box">
     <h4>Users</h4>
     <span id="data-users" class="data-google"></span>
-</div>
-<div class="box">
-    <h4>Pageviews</h4>
-    <span id="data-pageviews" class="data-google"></span>
 </div>
 <script>
 var formatNumber = function(num) {
@@ -58,6 +58,14 @@ gapi.analytics.ready(function() {
             labels : labels,
             datasets : [
               {
+                label: 'Pageviews',
+                fillColor : 'rgba(255,237,25,0.7)',
+                strokeColor : 'rgba(255,237,25,1)',
+                pointColor : 'rgba(255,237,25,1)',
+                pointStrokeColor : '#fff',
+                data : pageviews
+              },
+              {
                 label: 'Sessions',
                 fillColor : 'rgba(4,154,191,0.7)',
                 strokeColor : 'rgba(4,154,191,1)',
@@ -72,14 +80,6 @@ gapi.analytics.ready(function() {
                 pointColor : 'rgba(27,190,158,1)',
                 pointStrokeColor : '#fff',
                 data : users
-              },
-              {
-                label: 'Pageviews',
-                fillColor : 'rgba(255,237,25,0.7)',
-                strokeColor : 'rgba(255,237,25,1)',
-                pointColor : 'rgba(255,237,25,1)',
-                pointStrokeColor : '#fff',
-                data : pageviews
               }
             ]
         };
