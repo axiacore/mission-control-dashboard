@@ -27,32 +27,24 @@ class HomeView(LoginRequiredMixin, TemplateView):
 class SpotligthView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         case = next(spotligth_cycle)
-        # if case == 'A':
-        #     obj = Service.objects.all().order_by('?').first()
-        #     if not obj:
-        #         raise Http404('Create a Service first')
+        if case == 'A':
+            obj = Service.objects.all().order_by('?').first()
+            if not obj:
+                raise Http404('Create a Service first')
 
-        #     return render(request, 'service_detail.html', {
-        #         'obj': obj,
-        #     })
+            return render(request, 'service_detail.html', {
+                'obj': obj,
+            })
 
-        # elif case == 'B':
-        #     obj = GoogleAnalyticsSite.objects.all().order_by('?').first()
-        #     if not obj:
-        #         raise Http404('Create a GoogleAnalyticsSite first')
+        elif case == 'B':
+            obj = GoogleAnalyticsSite.objects.all().order_by('?').first()
+            if not obj:
+                raise Http404('Create a GoogleAnalyticsSite first')
 
-        #     return render(request, 'googleanalyticssite_detail.html', {
-        #         'ACCESS_TOKEN': get_access_token(),
-        #         'obj': obj,
-        #     })
-        obj = GoogleAnalyticsSite.objects.all().order_by('?').first()
-        if not obj:
-            raise Http404('Create a GoogleAnalyticsSite first')
-
-        return render(request, 'googleanalyticssite_detail.html', {
-            'ACCESS_TOKEN': get_access_token(),
-            'obj': obj,
-        })
+            return render(request, 'googleanalyticssite_detail.html', {
+                'ACCESS_TOKEN': get_access_token(),
+                'obj': obj,
+            })
 
 
 class TickerView(LoginRequiredMixin, View):
