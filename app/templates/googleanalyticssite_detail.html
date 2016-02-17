@@ -1,5 +1,5 @@
 <h3>{{ obj.website }}</h3>
-<div style="width: 1500px; height: 200px; margin: 40px auto 0;">
+<div style="width: 80%; height: 200px; margin: 40px auto 0;">
     <canvas id="theChart"></canvas>
 </div>
 <div class="box">
@@ -34,9 +34,9 @@ gapi.analytics.ready(function() {
     });
     dataQuery.execute(function (results) {
         var totals = results.totalsForAllResults;
-        $('#data-sessions').html('<div class="color"></div>'+formatNumber(totals['ga:sessions']));
-        $('#data-users').html('<div class="color"></div>'+formatNumber(totals['ga:users']));
-        $('#data-pageviews').html('<div class="color"></div>'+formatNumber(totals['ga:pageviews']));
+        $('#data-sessions').html('<div class="color"></div><div class="number">'+formatNumber(totals['ga:sessions'])+'</div>');
+        $('#data-users').html('<div class="color"></div><div class="number">'+formatNumber(totals['ga:users'])+'</div>');
+        $('#data-pageviews').html('<div class="color"></div><div class="number">'+formatNumber(totals['ga:pageviews'])+'</div>');
     });
 
     var report = new gapi.analytics.report.Data({

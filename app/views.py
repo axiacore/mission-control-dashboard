@@ -46,7 +46,6 @@ class SpotligthView(LoginRequiredMixin, View):
                 'obj': obj,
             })
 
-
 class TickerView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         response_list = []

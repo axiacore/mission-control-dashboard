@@ -131,14 +131,19 @@ h3 {
 .spotligth .box .data-google {
     color: #ffffff
 }
+.data-google .number {
+    display: inline-block;
+    vertical-align: middle;
+}
 .data-google .color {
     display: inline-block;
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
+    width: 1.3vw;
+    height: 1.3vw;
+    margin-right: 0.5vw;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
+    vertical-align: middle;
 }
 #data-sessions .color {
     border: 2px solid #049ABF;
