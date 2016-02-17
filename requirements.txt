@@ -3,6 +3,7 @@ Django==1.9.2
 google-api-python-client==1.4.2
 gunicorn==19.4.5
 ipython==4.0.1
+oauth2client==2.0.0
 piprot==0.9.6
 pyOpenSSL==0.15.1
 python-social-auth==0.2.13

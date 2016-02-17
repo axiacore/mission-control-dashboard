@@ -1,18 +1,18 @@
 <h3>{{ obj.website }}</h3>
-<div style="width: 80%; height: 200px; margin: 0 auto;">
+<div style="width: 80%; height: 200px; margin: 40px auto 0;">
     <canvas id="theChart"></canvas>
 </div>
 <div class="box">
     <h4>Sessions</h4>
-    <span id="data-sessions"></span>
+    <span id="data-sessions" class="data-google"></span>
 </div>
 <div class="box">
     <h4>Users</h4>
-    <span id="data-users"></span>
+    <span id="data-users" class="data-google"></span>
 </div>
 <div class="box">
     <h4>Pageviews</h4>
-    <span id="data-pageviews"></span>
+    <span id="data-pageviews" class="data-google"></span>
 </div>
 <script>
 var formatNumber = function(num) {
@@ -34,9 +34,9 @@ gapi.analytics.ready(function() {
     });
     dataQuery.execute(function (results) {
         var totals = results.totalsForAllResults;
-        $('#data-sessions').text(formatNumber(totals['ga:sessions']));
-        $('#data-users').text(formatNumber(totals['ga:users']));
-        $('#data-pageviews').text(formatNumber(totals['ga:pageviews']));
+        $('#data-sessions').html('<div class="color"></div><div class="number">'+formatNumber(totals['ga:sessions'])+'</div>');
+        $('#data-users').html('<div class="color"></div><div class="number">'+formatNumber(totals['ga:users'])+'</div>');
+        $('#data-pageviews').html('<div class="color"></div><div class="number">'+formatNumber(totals['ga:pageviews'])+'</div>');
     });
 
     var report = new gapi.analytics.report.Data({
@@ -59,25 +59,25 @@ gapi.analytics.ready(function() {
             datasets : [
               {
                 label: 'Sessions',
-                fillColor : 'rgba(255,0,0,0.5)',
-                strokeColor : 'rgba(255,0,0,1)',
-                pointColor : 'rgba(255,0,0,1)',
+                fillColor : 'rgba(4,154,191,0.7)',
+                strokeColor : 'rgba(4,154,191,1)',
+                pointColor : 'rgba(4,154,191,1)',
                 pointStrokeColor : '#fff',
                 data : sessions
               },
               {
                 label: 'Users',
-                fillColor : 'rgba(220,220,220,0.5)',
-                strokeColor : 'rgba(220,220,220,1)',
-                pointColor : 'rgba(220,220,220,1)',
+                fillColor : 'rgba(27,190,158,0.7)',
+                strokeColor : 'rgba(27,190,158,1)',
+                pointColor : 'rgba(27,190,158,1)',
                 pointStrokeColor : '#fff',
                 data : users
               },
               {
                 label: 'Pageviews',
-                fillColor : 'rgba(151,187,205,0.5)',
-                strokeColor : 'rgba(151,187,205,1)',
-                pointColor : 'rgba(151,187,205,1)',
+                fillColor : 'rgba(255,237,25,0.7)',
+                strokeColor : 'rgba(255,237,25,1)',
+                pointColor : 'rgba(255,237,25,1)',
                 pointStrokeColor : '#fff',
                 data : pageviews
               }
