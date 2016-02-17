@@ -35,7 +35,7 @@
     <script type="text/javascript">
     setTimeout(function () {
         window.location.reload();
-    }, 15 * 60 * 1000);     // Every 15 minutes
+    }, 10 * 60 * 1000);     // Every 10 minutes
 
     function renderSpotligth() {
         $.get('{% url 'spotligth' %}', function (response) {
