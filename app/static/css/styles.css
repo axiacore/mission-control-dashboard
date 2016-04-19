@@ -158,7 +158,7 @@ h3 {
     background-color: rgba(27,190,158,0.6);
 }
 
--webkit-keyframes move_eye {
+@-webkit-keyframes move_eye {
     from {
         margin-left: 110%;
     }
@@ -167,7 +167,7 @@ h3 {
     }
 }
 
-keyframes move_eye {
+@keyframes move_eye {
     from {
         margin-left: 110%;
     }
