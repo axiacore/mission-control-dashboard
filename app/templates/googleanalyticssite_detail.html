@@ -1,5 +1,5 @@
 <h3>{{ obj.website_display }}</h3>
-<div style="width: 80%; height: 200px; margin: 0 auto;">
+<div style="width: 50%; height: 90%; margin: 0 auto;">
     <canvas id="theChart"></canvas>
 </div>
 <div class="box">
@@ -58,40 +58,47 @@ gapi.analytics.ready(function() {
             labels : labels,
             datasets : [
               {
-                label: 'Pageviews',
-                fillColor : 'rgba(255,237,25,0.6)',
-                strokeColor : 'rgba(255,237,25,1)',
-                pointColor : 'rgba(255,237,25,1)',
-                pointStrokeColor : '#fff',
-                data : pageviews
+                label: 'users',
+
+                backgroundColor : 'rgba(27,190,158,0.6)',
+                borderColor : 'rgba(27,190,158,1)',
+                radius: 0,
+
+                data : users
               },
               {
                 label: 'Sessions',
 
-                fillColor : 'rgba(242,22,62,0.6)',
-                strokeColor : 'rgba(242,22,62,1)',
-                pointColor : 'rgba(242,22,62,1)',
+                backgroundColor : 'rgba(242,22,62,0.6)',
+                borderColor : 'rgba(242,22,62,1)',
+                radius: 0,
 
-                pointStrokeColor : '#fff',
                 data : sessions
               },
               {
-                label: 'Users',
-                fillColor : 'rgba(27,190,158,0.6)',
-                strokeColor : 'rgba(27,190,158,1)',
-                pointColor : 'rgba(27,190,158,1)',
-                pointStrokeColor : '#fff',
-                data : users
+                label: 'Pageviews',
+
+                backgroundColor : 'rgba(255,237,25,0.6)',
+                borderColor : 'rgba(255,237,25,1)',
+                radius: 0,
+
+                data : pageviews
               }
             ]
         };
-        new Chart(ctx).Line(data, {
-            animation: false,
-            showScale: false,
-            showTooltips: false,
-            responsive: true,
-            maintainAspectRatio: false,
-            pointDot: false
+        new Chart(ctx, {
+            data: data,
+            type: "line",
+            options: {
+                scales: {
+                    yAxes: [{
+                        display: false,
+                    }],
+                    xAxes: [{
+                        display: false
+                    }]
+                }
+            }
         });
     });
     report.execute();
