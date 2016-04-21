@@ -15,10 +15,18 @@ body {
     line-height: 270px
 }
 
-.service-detail h3 {
+.service-detail h3, .google-analytics h3 {
     font-size: 70px;
     margin: 20px 0px 0px;
     font-weight: 400;
+}
+
+.google-analytics {
+    padding: 127px 0px
+}
+
+.google-analytics h3 {
+    margin: 0px 0px 40px;
 }
 
 h1 {

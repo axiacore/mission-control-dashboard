@@ -53,7 +53,6 @@
                     var totalWidth = 0;
                     $('.ticker-container .box').each(function(index, element) {
                         totalWidth += $(element).outerWidth(true);
-                        console.log($(element).outerWidth(true)+' '+totalWidth);
                     });
                     var ourCssFile = document.styleSheets[2];
                     ourCssFile.removeRule(ourCssFile.cssRules.length - 1);
