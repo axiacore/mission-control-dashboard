@@ -43,6 +43,7 @@ Create the file ```app/local_settings.py``` with:
 
 ```bash
     $ vim app/local_settings.py
+    $ vim client-secret.json
 ```
 
 ```python
