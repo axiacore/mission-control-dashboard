@@ -34,6 +34,10 @@
     <script type="text/javascript" src=//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.1/Chart.min.js></script>
     <script type="text/javascript">
 
+    setTimeout(function () {
+       window.location.reload();
+    }, 60 * 60 * 1000);
+
     function renderSpotligth() {
         $.get('{% url 'spotligth' %}', function (response) {
             $('.spotligth').fadeOut(function () {
