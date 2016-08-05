@@ -95,22 +95,19 @@ class TickerView(LoginRequiredMixin, View):
         # Uptime Robot
         monitor_list = cache.get('monitor_list')
         if not monitor_list:
-            try:
-                uptime_robot = UptimeRobot()
-                success, response = uptime_robot.get_monitors()
-                if success:
-                    monitor_list = []
-                    for monitor in response.get('monitors').get('monitor'):
-                        monitor_list.append({
-                            'title': monitor.get('friendlyname'),
-                            'label': 'Uptime',
-                            'value': '{0}%'.format(
-                                monitor.get('alltimeuptimeratio')
-                            ),
-                        })
-                    cache.set('monitor_list', monitor_list, 90)
-            except ConnectionError:
-                monitor_list = None
+            uptime_robot = UptimeRobot()
+            success, response = uptime_robot.get_monitors()
+            if success:
+                monitor_list = []
+                for monitor in response.get('monitors').get('monitor'):
+                    monitor_list.append({
+                        'title': monitor.get('friendlyname'),
+                        'label': 'Uptime',
+                        'value': '{0}%'.format(
+                            monitor.get('alltimeuptimeratio')
+                        ),
+                    })
+                cache.set('monitor_list', monitor_list, 90)
 
         if monitor_list:
             response_list.extend(monitor_list)
