@@ -9,15 +9,12 @@ from django.views.generic import TemplateView
 from django.views.generic.base import View
 
 from .google_analytics import get_access_token
+from .uptime_robot import UptimeRobot
 from .models import Service
 from .models import GoogleAnalyticsSite
-from .models import GoogleAnalyticsSiteGoal
 
 import requests
 from requests.exceptions import ConnectionError
-
-
-spotligth_cycle = cycle('AB')
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -25,8 +22,10 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
 
 class SpotligthView(LoginRequiredMixin, View):
+    SPOTLIGTH_CYCLE = cycle('AB')
+
     def get(self, request, *args, **kwargs):
-        case = next(spotligth_cycle)
+        case = next(self.SPOTLIGTH_CYCLE)
         if case == 'A':
             obj = Service.objects.all().order_by('?').first()
             if not obj:
@@ -93,37 +92,28 @@ class TickerView(LoginRequiredMixin, View):
         if sentry_data:
             response_list.append(sentry_data)
 
-        # Mmonit
-        mmonit_list = cache.get('mmonit_list')
-        if not mmonit_list:
+        # Uptime Robot
+        monitor_list = cache.get('monitor_list')
+        if not monitor_list:
             try:
-                s = requests.Session()
-                s.get(settings.MMONIT_URL + 'index.csp')
-                s.post(
-                    settings.MMONIT_URL + 'z_security_check',
-                    params={
-                        'z_username': settings.MMONIT_USER,
-                        'z_password': settings.MMONIT_PASS,
-                    }
-                )
-                req = s.post(
-                    settings.MMONIT_URL + 'reports/uptime/list',
-                    params={'range': '6'},
-                )
-                if req.ok:
-                    mmonit_list = []
-                    for item in req.json()['items']:
-                        mmonit_list.append({
-                            'title': item['name'],
+                uptime_robot = UptimeRobot()
+                success, response = uptime_robot.get_monitors()
+                if success:
+                    monitor_list = []
+                    for monitor in response.get('monitors').get('monitor'):
+                        monitor_list.append({
+                            'title': monitor.get('friendlyname'),
                             'label': 'Uptime',
-                            'value': '{0}%'.format(item['uptime']),
+                            'value': '{0}%'.format(
+                                monitor.get('alltimeuptimeratio')
+                            ),
                         })
-                    cache.set('mmonit_list', mmonit_list, 90)
+                    cache.set('monitor_list', monitor_list, 90)
             except ConnectionError:
-                mmonit_list = None
+                monitor_list = None
 
-        if mmonit_list:
-            response_list += mmonit_list
+        if monitor_list:
+            response_list.extend(monitor_list)
 
         return render(request, 'ticker_detail.html', {
             'response_list': response_list,
