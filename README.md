@@ -64,9 +64,8 @@ ZENDESK_API = '{apikey}'
 SENTRY_URL = 'http://sentry.com/api/0/organizations/{mycompany}/stats/'
 SENTRY_KEY = '{apikey}'
 
-MMONIT_URL = 'http://{monit-url}/'
-MMONIT_USER = '{user}'
-MMONIT_PASS = '{pass}'
+UPTIME_ROBOT_URL = 'https://api.uptimerobot.com/'
+UPTIME_ROBOT_KEY = '{pass}'
 
 ```
 
