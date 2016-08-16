@@ -9,7 +9,7 @@ class UptimeRobot(object):
         self.api_key = settings.UPTIME_ROBOT_KEY
         self.base_url = settings.UPTIME_ROBOT_URL
 
-    def get_monitors(self, response_times=0, logs=0, uptime_ratio=''):
+    def get_monitors(self, response_times=0, logs=0, uptime_ratio=30):
         """
         Returns status and response payload for all known monitors.
         """
@@ -19,17 +19,14 @@ class UptimeRobot(object):
         # responseTimes - optional (defines if the response time data of each
         # monitor will be returned. Should be set to 1 for getting them. Default
         # is 0)
-        if response_times:
-            url += '&responseTimes=1'
+        url += '&responseTimes={0}'.format(response_times)
         # logs - optional (defines if the logs of each monitor will be returned.
         # Should be set to 1 for getting the logs. Default is 0)
-        if logs:
-            url += '&logs=1'
+        url += '&logs={0}'.format(logs)
         # customUptimeRatio - optional (defines the number of days to calculate
         # the uptime ratio(s) for. Ex: customUptimeRatio=7-30-45 to get the
         # uptime ratios for those periods)
-        if uptime_ratio:
-            url += '&customUptimeRatio={0}'.format(uptime_ratio)
+        url += '&customUptimeRatio={0}'.format(uptime_ratio)
 
         # Verifying in the response is jsonp in otherwise is error
         response = request.urlopen(url)
@@ -37,6 +34,6 @@ class UptimeRobot(object):
         j_content = json.loads(content)
         if j_content.get('stat'):
             stat = j_content.get('stat')
-            if stat == "ok":
+            if stat == 'ok':
                 return True, j_content
         return False, j_content

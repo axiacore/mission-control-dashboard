@@ -8,13 +8,13 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.base import View
 
+import requests
+from requests.exceptions import ConnectionError
+
 from .google_analytics import get_access_token
 from .uptime_robot import UptimeRobot
 from .models import Service
 from .models import GoogleAnalyticsSite
-
-import requests
-from requests.exceptions import ConnectionError
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -104,7 +104,7 @@ class TickerView(LoginRequiredMixin, View):
                         'title': monitor.get('friendlyname'),
                         'label': 'Uptime',
                         'value': '{0}%'.format(
-                            monitor.get('alltimeuptimeratio')
+                            monitor.get('customuptimeratio')
                         ),
                     })
                 cache.set('monitor_list', monitor_list, 90)
