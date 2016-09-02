@@ -1,5 +1,3 @@
-import json
-
 from django.conf import settings
 
 from oauth2client.service_account import ServiceAccountCredentials
