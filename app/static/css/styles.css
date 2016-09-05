@@ -104,11 +104,13 @@ h1 .sub-title {
 .ticker-container {
     height: 220px;
     margin-left: 110%;
-    animation: move_eye 90s linear 0s normal;
-    -webkit-animation: move_eye 90s linear 0s normal;
     position: relative;
-    width: 50000px
+    width: 50000px;
 }
+
+.ticker-animate { 
+    animation: move_eye 90s linear 0s normal;
+ }
 
 .spotligth .box {
     display: inline-block;
@@ -161,15 +163,6 @@ h1 .sub-title {
 #data-users .color {
     border: 2px solid #1BBE9E;
     background-color: rgba(27,190,158,0.6);
-}
-
-@-webkit-keyframes move_eye {
-    from {
-        margin-left: 110%;
-    }
-    to {
-        margin-left: -100%;
-    }
 }
 
 @keyframes move_eye {
