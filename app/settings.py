@@ -54,6 +54,9 @@ DATABASES = {
     }
 }
 
+# Time in seconds 31536000 = 1 year
+SESSION_COOKIE_AGE = 31536000
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Bogota'
