@@ -39,11 +39,15 @@ On your production server do:
     $ pip install -r mission-control-dashboard/requirements.txt
 ```
 
+Download the ```client-secret.json``` and put it at the project base folder according to https://developers.google.com/identity/protocols/OAuth2ServiceAccount#creatinganaccount
+
+Take your service account email and add it to your google analytics account:
+![Screenshot](https://s3.amazonaws.com/uploads.hipchat.com/50553/341552/jS41gozEzo5ib1b/Analytics.png)
+
 Create the file ```app/local_settings.py``` with:
 
 ```bash
     $ vim app/local_settings.py
-    $ vim client-secret.json
 ```
 
 ```python
