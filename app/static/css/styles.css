@@ -15,6 +15,10 @@ body {
     line-height: 270px
 }
 
+.service-detail .warning {
+    color:#d24949;
+}
+
 .service-detail h3, .google-analytics h3 {
     font-size: 70px;
     margin: 20px 0px 0px;
@@ -108,7 +112,7 @@ h1 .sub-title {
     width: 50000px;
 }
 
-.ticker-animate { 
+.ticker-animate {
     animation: move_eye 90s linear 0s normal;
  }
 
