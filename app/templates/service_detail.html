@@ -1,5 +1,5 @@
 <div class="service-detail">
-    <h2>{{ obj.days_to_go }}</h2>
+    <h2 {% if obj.days_to_go < 30 %}class="warning"{% endif %}>{{ obj.days_to_go }}</h2>
     <h3>DAYS TO GO</h3>
     <div class="box">
         <h4>CUSTOMER</h4>

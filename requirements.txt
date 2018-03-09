@@ -4,7 +4,7 @@ gunicorn==19.6.0 # Updated from 19.4.5
 ipython==5.1.0 # Updated from 4.0.1
 oauth2client==3.0.0 # Updated from 2.0.0
 piprot==0.9.6
-pyOpenSSL==16.1.0 # Updated from 0.15.1
+pyOpenSSL==16.2.0 # Updated from 0.15.1
 python-social-auth==0.2.21 # Updated from 0.2.13
 raven==5.26.0 # Updated from 5.9.2
 django-extensions==1.7.3 # Updated from 1.6.1
